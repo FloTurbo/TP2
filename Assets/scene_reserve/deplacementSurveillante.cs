@@ -11,6 +11,8 @@ public class deplacementSurveillante : MonoBehaviour
     public GameObject joueur;
     public GameObject explosion;
     Color couleurDebut;
+    private float dernierTempsExecution = 0;
+    private float delaiMinimum = 2.0f; // Délai minimum en secondes
 
     void Start()
     {
@@ -41,11 +43,22 @@ public class deplacementSurveillante : MonoBehaviour
         }
         if(getDistance() < 0.9f) /* si les objets entre en contact */
         {
+            
             //explostion de la capsule 
             Instantiate(explosion, transform.position, Quaternion.identity);
 
-            //enlève 2 au score du joueur
-            capsules_nefaste.scores = capsules_nefaste.scores - 1;
+            //empêche la cqpsule d'Attaquer le personnage 2 fois de suite
+            if (Time.time - dernierTempsExecution >= delaiMinimum)
+            {
+               
+                //enlève 2 au score du joueur
+                capsules_nefaste.scores = capsules_nefaste.scores - 2;
+
+                //réinitialise le temps d'exécution
+                dernierTempsExecution = Time.time;
+            }
+
+            
 
             //vérifie que le nombre ne soit pas négatif
             if(capsules_nefaste.scores < 0)

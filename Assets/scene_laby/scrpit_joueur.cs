@@ -49,9 +49,12 @@ public class scrpit_joueur : MonoBehaviour
                 //part l'animation
                 animationPorte.enabled = true;
 
-                
+                //changement la scène de la réserve
+                Invoke("changementScenePorte", 1.0f);
+
+
             }
-           
+
         }
 
         if(other.gameObject.tag == "ennemi") /* si le joueur entre en contact avec un ennemi*/
@@ -62,11 +65,22 @@ public class scrpit_joueur : MonoBehaviour
             //affiche le message de game over
             gameOver.text = "Game Over";
 
-            //appel de la scène d'acceuil
-            SceneManager.LoadScene("ecran_acceuil");
+            //appel de la scène d'acceuil après 1 seconde
+            Invoke("changementsSceneMort", 1.0f);
         }
     }
 
+    void changementScenePorte()
+    {
+        //appel de la scène d'acceuil
+        SceneManager.LoadScene("scene_reserve");
+    }
+
+    void changementsSceneMort()
+    {
+        //appel de la scène d'acceuil
+        SceneManager.LoadScene("ecran_acceuil");
+    }
 
     // Update is called once per frame
     void Update()

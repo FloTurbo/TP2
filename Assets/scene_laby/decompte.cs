@@ -44,11 +44,19 @@ public class decompte : MonoBehaviour
             //afiche le message de game over
             gameOver.text = "Game Over";
 
-            //appel de la scène d'acceuil
-            SceneManager.LoadScene("ecran_acceuil");
-
             //désactive les contrôles du personnage
             personnage.enabled = false;
+
+            //appel de la scène d'acceuil après 1 seconde
+            Invoke("changementsSceneMort", 1.0f);
         }
     }
+
+    void changementsSceneMort()
+    {
+        //appel de la scène d'acceuil
+        SceneManager.LoadScene("ecran_acceuil");
+    }
+
 }
+
