@@ -8,11 +8,14 @@ public class capsules_nefaste : MonoBehaviour
     //public GameObject capsule;
     public GameObject joueur;
     public GameObject explosion;
-    public static int scores = 0; /* variable qui détient le score de joueur */
+    public static int scores; /* variable qui détient le score de joueur */
     public static int objectif = 15; //objectif de capsules à détuire
 
     void Start()
     {
+        //initialisation du scores
+        scores = 0;
+
         objectif = objectif;
 
         //instancie la variable de joueur au nom de arthur

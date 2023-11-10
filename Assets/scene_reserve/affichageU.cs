@@ -18,6 +18,8 @@ public class affichageU : MonoBehaviour
     public ThirdPersonCharacter personnage;
     void Start()
     {
+      
+
         //départ du chronomètre
         tempsActuel = tempsDepart;
         compteARebours.text = tempsActuel.ToString("0");
@@ -58,6 +60,7 @@ public class affichageU : MonoBehaviour
             //appel de la scène d'acceuil après 1 seconde
             Invoke("changementSceneAcceuil", 2.0f);
 
+            capsules_nefaste.scores = 0;
             tempsActuel = tempsDepart;
         }
 
